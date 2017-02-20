@@ -63,6 +63,7 @@ fastlane/report.xml
 fastlane/screenshots
 
 Packages/
+Perfect-App-Template.xcodeproj
 *.xcodeproj
 buildlinux
 Package.swift.orig
