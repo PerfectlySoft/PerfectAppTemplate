@@ -1,0 +1,8 @@
+{
+
+	"baseURL": "http://localhost:8181",
+	"baseDomain": "localhost",
+
+	"httpport": 8181
+
+}
