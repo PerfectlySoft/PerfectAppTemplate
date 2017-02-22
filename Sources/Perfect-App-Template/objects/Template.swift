@@ -18,10 +18,9 @@
 //
 
 //import StORM
-//import PostgresStORM
-//import SwiftRandom
+//import SQLiteStORM
 //
-//public class Event: PostgresStORM {
+//public class Event: SQLiteStORM {
 //	public var property		= ""
 //	public var val			= ""
 //
