@@ -57,7 +57,7 @@ The following will clone and build an empty starter project and launch the serve
 git clone https://github.com/PerfectlySoft/PerfectAppTemplate.git
 cd PerfectAppTemplate
 swift build
-.build/debug/PerfectAppTemplate
+.build/debug/Perfect-App-Template
 ```
 
 You should see the following output:
@@ -66,7 +66,7 @@ You should see the following output:
 [INFO] Starting HTTP server localhost on 0.0.0.0:8181
 ```
 
-This means the server is running and waiting for connections. Access [http://localhost:8181/](http://localhost: 8181/) to see the greeting. Hit control-c to terminate the server.
+This means the server is running and waiting for connections. Access [http://localhost:8181/](http://localhost:8181/) to see the greeting. Hit control-c to terminate the server.
 
 ## Starter Content
 
