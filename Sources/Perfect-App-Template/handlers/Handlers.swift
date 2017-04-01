@@ -22,7 +22,6 @@ import StORM
 
 class Handlers {
 
-
 	// Basic "main" handler - simply outputs "Hello, world!"
 	static func main(data: [String:Any]) throws -> RequestHandler {
 		return {
@@ -32,24 +31,5 @@ class Handlers {
 			response.completed()
 		}
 	}
-	
 
-
-	// Common helper function to dump rows to JSON
-	static func nestedDataDict(_ rows: [StORM]) -> [Any] {
-		var d = [Any]()
-		for i in rows {
-			d.append(i.asDataDict())
-		}
-		return d
-	}
-	// Used for healthcheck functionality for monitors and load balancers.
-	// Do not remove unless you have an alternate plan
-	static func healthcheck(data: [String:Any]) throws -> RequestHandler {
-		return {
-			request, response in
-			let _ = try? response.setBody(json: ["health": "ok"])
-			response.completed()
-		}
-	}
 }

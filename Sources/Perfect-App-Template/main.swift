@@ -20,11 +20,16 @@
 import PerfectLib
 import PerfectHTTP
 import PerfectHTTPServer
+import PerfectRequestLogger
+import PerfectLogger
 
 
 var HTTPport = 8181
 config()
 Utility.initializeObjects()
+
+let httplogger = RequestLogger()
+RequestLogFile.location = "./webLog.log"
 
 // Configure Server
 var confData: [String:[[String:Any]]] = [

@@ -20,7 +20,7 @@
 extension Utility {
 	static func initializeObjects() {
 
-//		let a = Account()
+//		let a = Event()
 //		try? a.setup()
 
 	}
