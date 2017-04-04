@@ -26,8 +26,7 @@ class Handlers {
 	static func main(data: [String:Any]) throws -> RequestHandler {
 		return {
 			request, response in
-			response.setHeader(.contentType, value: "text/html")
-			response.appendBody(string: "<html><title>Hello, world!</title><body>Hello, world!</body></html>")
+			response.setBody(string: "<html><title>Hello, world!</title><body>Hello, world!</body></html>")
 			response.completed()
 		}
 	}
