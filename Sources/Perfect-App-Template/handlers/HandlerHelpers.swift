@@ -48,4 +48,20 @@ extension Handlers {
 			response.completed()
 		}
 	}
+
+	// Handles psuedo redirects.
+	// Will serve up alternate content, for example if you wish to report an error condition, like missing data.
+	static func redirectRequest(_ request: HTTPRequest, _ response: HTTPResponse, msg: String, template: String, additional: [String:String] = [String:String]()) {
+
+		var context: [String : Any] = [
+			"msg": msg
+		]
+		for i in additional {
+			context[i.0] = i.1
+		}
+
+		response.render(template: template, context: context)
+		response.completed()
+		return
+	}
 }
