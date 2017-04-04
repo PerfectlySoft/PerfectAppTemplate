@@ -45,4 +45,10 @@ extension HTTPResponse {
 	public func render(template: String, context: [String: Any] = [String: Any]()) {
 		mustacheRequest(request: self.request, response: self, handler: MustacheHandler(context: context), templatePath: request.documentRoot + "/\(template).mustache")
 	}
+	public func redirect(path: String) {
+		self.status = .found
+		self.addHeader(.location, value: path)
+		self.completed()
+	}
+
 }
