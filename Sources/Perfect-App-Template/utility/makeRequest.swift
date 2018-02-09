@@ -21,15 +21,15 @@ extension Utility {
 	/// - method: The HTTP Method enum, i.e. .get, .post
 	/// - route: The route required
 	/// - body: The JSON formatted sring to sent to the server
-  /// - bearToken: a session token when authentication required.
-  /// - completion: a callback when responded.
+	/// - bearToken: a session token when authentication required.
+	/// - completion: a callback when responded.
 	static func makeRequest(
 		_ method: HTTPMethod,
 		_ url: String,
 		body: String = "",
 		encoding: String = "JSON",
 		bearerToken: String = "",
-    completion: @escaping ([String:Any], Error?) -> Void ) {
+		completion: @escaping ([String:Any], Error?) -> Void ) {
 
 		let curlObject = CURL(url: url)
 		curlObject.setOption(CURLOPT_HTTPHEADER, s: "Accept: application/json")
@@ -57,27 +57,27 @@ extension Utility {
 			curlObject.setOption(CURLOPT_HTTPGET, int: 1)
 		}
 
-    _ = curlObject.perform { (errCode, _, bodyData) in
+		_ = curlObject.perform { (errCode, _, bodyData) in
 
-      guard errCode == 0 else {
-        completion([:], PerfectError.networkError(Int32(errCode), "network failure"))
-        return
-      }
+			guard errCode == 0 else {
+				completion([:], PerfectError.networkError(Int32(errCode), "network failure"))
+				return
+			}
 
-      guard let string = String(validatingUTF8: bodyData) else {
-        completion([:], PerfectError.systemError(0, "unexpected data returned"))
-        return
-      }
+			guard let string = String(validatingUTF8: bodyData) else {
+				completion([:], PerfectError.systemError(0, "unexpected data returned"))
+				return
+			}
 
-      do {
-        guard let dic = try string.jsonDecode() as? [String: Any] else {
-          completion([:], PerfectError.apiError("empty content"))
-          return
-        }
-        completion(dic, nil)
-      } catch {
-        completion([:], error)
-      }
-    }
+			do {
+				guard let dic = try string.jsonDecode() as? [String: Any] else {
+					completion([:], PerfectError.apiError("empty content"))
+					return
+				}
+				completion(dic, nil)
+			} catch {
+				completion([:], error)
+			}
+		}
 	}
 }
